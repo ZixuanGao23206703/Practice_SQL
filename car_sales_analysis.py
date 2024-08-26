@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 # Connect to SQLite database
 conn = sqlite3.connect('car_sales.db')
 cursor = conn.cursor()
@@ -131,18 +132,40 @@ print(customer_spending)
 # Visualization
 
 # Top Selling Models Bar Chart
-sns.barplot(x='model', y='total_sales', data=top_selling_models)
-plt.title('Top Selling Car Models')
+plt.figure(figsize=(10, 6))
+sns.barplot(x='model', y='total_sales', data=top_selling_models, palette='viridis')
+plt.title('Top Selling Car Models', fontsize=16)
+plt.xlabel('Car Model', fontsize=14)
+plt.ylabel('Total Sales', fontsize=14)
+plt.xticks(rotation=45, fontsize=12)
+plt.yticks(fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.tight_layout()
 plt.show()
 
 # Sales by Region Pie Chart
-sales_by_region.plot.pie(y='total_sales', labels=sales_by_region['region_name'], autopct='%1.1f%%')
-plt.title('Sales Distribution by Region')
+plt.figure(figsize=(8, 8))
+colors = sns.color_palette('coolwarm', len(sales_by_region))
+explode = [0.1 if i == sales_by_region['total_sales'].idxmax() else 0 for i in range(len(sales_by_region))]
+sales_by_region.set_index('region_name', inplace=True)
+sales_by_region.plot.pie(y='total_sales', labels=sales_by_region.index, autopct='%1.1f%%', 
+                         startangle=140, colors=colors, explode=explode, shadow=True)
+plt.title('Sales Distribution by Region', fontsize=16)
+plt.ylabel('')  # Hide y-label as it's not needed for pie chart
+plt.legend(loc='upper left', bbox_to_anchor=(1, 0.8), fontsize=12)
+plt.tight_layout()
 plt.show()
 
 # Customer Spending Histogram
-sns.histplot(customer_spending['total_spent'], bins=10)
-plt.title('Customer Spending Distribution')
+plt.figure(figsize=(10, 6))
+sns.histplot(customer_spending['total_spent'], bins=10, kde=True, color='royalblue', alpha=0.7)
+plt.title('Customer Spending Distribution', fontsize=16)
+plt.xlabel('Total Spent ($)', fontsize=14)
+plt.ylabel('Frequency', fontsize=14)
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.tight_layout()
 plt.show()
 
 # Close the database connection
