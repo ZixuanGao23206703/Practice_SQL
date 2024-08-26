@@ -47,29 +47,39 @@ To run this project, you need:
 - unittest (built-in with Python)
 
 Install them using:
-# pip install -r requirements.txt
+```bash
+ pip install -r requirements.txt
+```
 
-### How to Run:
 Clone the repository:
-# git clone https://github.com/tamarsaa/car_sales_data_analysis.git
-# cd car_sales_data_analysis
+```bash
+ git clone https://github.com/ZixuanGao23206703/Practice_SQL.git
+ cd Practice_SQL
+```
 
-### Install the dependencies:
-# pip install -r requirements.txt
+Install the dependencies:
+```bash
+ pip install -r requirements.txt
+```
 
-### Run the analysis:
-# python car_sales_analysis.py
+Run the analysis:
+```bash
+ python car_sales_analysis.py
+```
+How to Test:  
+Set Up Virtual Environment (Optional but recommended):  
+Create and activate a virtual environment to isolate the testing environment.  
+```bash
+ python -m venv venv
+ source venv/bin/activate
+```
 
-### How to Test:
-Set Up Virtual Environment (Optional but recommended):
-Create and activate a virtual environment to isolate the testing environment.
-# python -m venv venv
-# source venv/bin/activate
-Or On Windows:
-# venv\Scripts\activate
+ Run the tests:
+ ```bash
+ python -m unittest test_sales_analysis.py
+```
 
-### Install Dependencies:
-# pip install -r requirements.txt
-
-### Run the tests:
-# python -m unittest test_sales_analysis.py
+## :mailbox: Contact  
+Email: zixuan.gao123@gmail.com    
+LinkedIn: https://www.linkedin.com/in/zixuan-gia/   
+GitHub: https://github.com/ZixuanGao23206703
