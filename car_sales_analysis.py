@@ -145,4 +145,5 @@ sns.histplot(customer_spending['total_spent'], bins=10)
 plt.title('Customer Spending Distribution')
 plt.show()
 
-# Close the database co
+# Close the database connection
+conn.close()
